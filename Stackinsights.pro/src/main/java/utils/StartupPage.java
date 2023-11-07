@@ -96,13 +96,13 @@ public class StartupPage {
 
     public List<String> getTabName() {
         wait(By.xpath("//input[@placeholder='Please input']"));
-        List<String> ABC = new ArrayList<>();
+        List<String> TabName = new ArrayList<>();
         List<WebElement> names = driver.findElements(By.xpath("//input[@placeholder='Please input']"));
 
         for (WebElement element : names) {
-            ABC.add(element.getAttribute("value"));
+            TabName.add(element.getAttribute("value"));
         }
-        return ABC;
+        return TabName;
     }
 
     public void navigateToUrl(String url, String endPoint) {
