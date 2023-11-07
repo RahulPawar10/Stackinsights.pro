@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Stackinsights.pro</groupId>
+  <artifactId>Stackinsights.pro</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+    <dependencies>
+ <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.1-jre</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium.core/selenium-core -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium.core</groupId>
+            <artifactId>selenium-core</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>4.14.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.1.4</version>
+        </dependency>
+
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-chrome-driver</artifactId>
+    <version>4.14.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.14.1</version>
+</dependency>
+
+<dependency>
+    <groupId>org.seleniumhq.selenium.core</groupId>
+    <artifactId>selenium-core</artifactId>
+    <version>1.0.1</version>
+</dependency>
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.10.1</version>
+</dependency>
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.5.3</version>
+</dependency>
+
+
+
+
+</dependencies>
+</project>
