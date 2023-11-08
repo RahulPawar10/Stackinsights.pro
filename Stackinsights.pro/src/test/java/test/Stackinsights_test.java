@@ -42,6 +42,8 @@ public class Stackinsights_test {
     public void VerifyTheGridNameAndServiceNameOnGeneralServicePage() throws Exception {
         try {
             startupPage.refresh();
+            startupPage.navigateToUrl(configReader.properties("baseUrl"), "General-Service/Services");
+
 
             //verify the Grid Name
             softAssert.assertEquals(startupPage.listOfGrid(), Arrays.asList("Service Groups", "Service Names", "Load (calls / min)", "Success Rate (%)", "Latency (ms)", "Apdex"),"Grid Name Not matched");
