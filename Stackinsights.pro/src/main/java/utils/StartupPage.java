@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -69,8 +70,8 @@ public class StartupPage {
     }
 
     public void refresh() throws InterruptedException {
-        Thread.sleep(2000);
         driver.navigate().refresh();
+        Thread.sleep(2000);
     }
 
     public void killDriver() {
@@ -107,5 +108,46 @@ public class StartupPage {
 
     public void navigateToUrl(String url, String endPoint) {
         driver.navigate().to(url + endPoint);
+    }
+    public void clickOnToggleOn() {
+        wait(By.xpath("//div[@class='el-switch el-switch--default']"));
+        WebElement toggle = driver.findElement(By.xpath("//div[@class='el-switch el-switch--default']"));
+        if (toggle.getAttribute("aria-checked").equals("false")) {
+            wait(By.xpath("//div[@class='el-switch el-switch--default']/span"));
+            driver.findElement(By.xpath("//div[@class='el-switch el-switch--default']/span")).click();
+        }
+    }
+
+    public void clickOnToggleOff() {
+        WebElement toggle = driver.findElement(By.xpath("//div[@class='el-switch el-switch--default is-checked']"));
+        if (toggle.getAttribute("aria-checked").equals("true")) {
+            wait(By.xpath("//div[@class='el-switch el-switch--default is-checked']/span"));
+            driver.findElement(By.xpath("//div[@class='el-switch el-switch--default is-checked']/span")).click();
+        }
+    }
+    public String getToggleTextMessage() {
+        WebElement element= driver.findElement(By.xpath("//p[@class='el-message__content']"));
+        // Create Actions class object
+        Actions actions = new Actions(driver);
+        return element.getText();
+    }
+    public void waitForPopUpDisabled(WebElement ele) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.invisibilityOf(ele));
+    }
+    public void PopUpDisabled(){
+        WebElement element= driver.findElement(By.xpath("//p[@class='el-message__content']"));
+        waitForPopUpDisabled(element);
+    }
+
+    public void clickOnKebabIcon() throws InterruptedException {
+        wait(By.xpath("//span[@class='icon-operation']"));
+        driver.findElement(By.xpath("//span[@class='icon-operation']")).click();
+        Thread.sleep(2000);
+    }
+    public List<String> getListOfOptionsOnKebabMenu(){
+
+        List<WebElement> list=driver.findElements(By.xpath("//span[@class='edit-tab']/../../li/span"));
+        return list.stream().map(ele ->ele.getText()).collect(Collectors.toList());
     }
 }

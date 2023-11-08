@@ -8,6 +8,7 @@ import java.util.List;
 import Pages.Loginpage;
 import Pages.Services;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -69,9 +70,58 @@ public class Stackinsights_test {
             throw new RuntimeException(e);
         }
     }
+    @Test(description = "Verify the dropdown value should be present inside the service , names inside kebab menu options inside the service tab , Toggle Btn and after clicking on Toggle Btn and get massage and add tab btn is displayed and verify the menu option is displayed"
+            , testName = "TC-02")
+    public void VerifyTheServiceNameInsideTheDropdownAndVerifyKebabMenuOptionsAndMenuOptions() throws Exception {
+        try {
+            Thread.sleep(2000);
+            startupPage.refresh();
+
+            startupPage.navigateToUrl(configReader.properties("baseUrl"), "dashboard/GENERAL/Service/YWdlbnQ6OnB5dGhvbi1hcHA=.1/General-Service");
+
+            startupPage.clickOnToggleOn();
+            System.out.println(startupPage.getToggleTextMessage());
+            softAssert.assertEquals(startupPage.getToggleTextMessage(), "You are entering edit mode","text Message not matched");
+            startupPage.PopUpDisabled();
+
+            startupPage.clickOnToggleOff();
+            System.out.println(startupPage.getToggleTextMessage());
+            softAssert.assertEquals(startupPage.getToggleTextMessage(), "You are entering view mode","text Message not matched");
+
+            startupPage.PopUpDisabled();
+            startupPage.clickOnToggleOn();
+
+            startupPage.PopUpDisabled();
+            startupPage.clickOnKebabIcon();
+
+            List<String> list=startupPage.getListOfOptionsOnKebabMenu();
+            softAssert.assertEquals(list,Arrays.asList("Enable editing tab names","Delete"),"Kebab menu option are not matched");
+
+            softAssert.assertAll();
+            
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /*@Test(description = ""
+            , testName = "TC-03")
+    public void VerifyThe() throws Exception {
+        try {
+            Thread.sleep(2000);
+            startupPage.refresh();
+
+            softAssert.assertAll();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }*/
+
+
     @AfterClass()
     public void teardown() {
-         startupPage.killDriver();
+        // startupPage.killDriver();
     }
 
 }
