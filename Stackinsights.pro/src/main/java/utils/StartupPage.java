@@ -37,7 +37,7 @@ public class StartupPage {
         options.addArguments("--remote-allow-origins=*");
         driver.get(baseUrl);
         driver.manage().window().maximize();
-        return PageFactory.initElements(driver, Loginpage.class);
+        return PageFactory.initElements(driver,Loginpage.class);
     }
 
     public String getTitle() {
@@ -49,8 +49,13 @@ public class StartupPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
+    public void waitForWebElement(WebElement ele) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(ele));
+    }
 
-    public List<String> listOfGrid() {
+    public List<String> listOfGrid() throws InterruptedException {
+        Thread.sleep(2000);
         wait(By.xpath("//table[@class='el-table__header']//div[@class='cell']"));
         List<WebElement> list = driver.findElements(By.xpath("//table[@class='el-table__header']//div[@class='cell']"));
         return list.stream().map(ele -> ele.getText()).collect(Collectors.toList());
@@ -126,9 +131,8 @@ public class StartupPage {
         }
     }
     public String getToggleTextMessage() {
+        wait(By.xpath("//p[@class='el-message__content']"));
         WebElement element= driver.findElement(By.xpath("//p[@class='el-message__content']"));
-        // Create Actions class object
-        Actions actions = new Actions(driver);
         return element.getText();
     }
     public void waitForPopUpDisabled(WebElement ele) {
@@ -149,5 +153,23 @@ public class StartupPage {
 
         List<WebElement> list=driver.findElements(By.xpath("//span[@class='edit-tab']/../../li/span"));
         return list.stream().map(ele ->ele.getText()).collect(Collectors.toList());
+    }
+    public void clickOnTab(String Name) throws InterruptedException {
+
+        wait(By.xpath("//input[@placeholder='Please input']"));
+        List<WebElement> names = driver.findElements(By.xpath("//input[@placeholder='Please input']"));
+        for (WebElement element : names) {
+            if (element.getAttribute("value").equals(Name)) {
+                Thread.sleep(2000);
+                element.click();
+                break;
+            }
+        }
+    }
+    public void clickOnAnyServiceInstance() throws InterruptedException {
+        wait(By.xpath("//span[@class='link']"));
+        Thread.sleep(2000);
+        WebElement Inst=driver.findElement(By.xpath("//span[@class='link']"));
+        Inst.click();
     }
 }

@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/l/OneDrive/Desktop/selenium session/Stackinsights.pro"><classes><class name="test.Stackinsights_test"><methods><include name="getTitle"/></methods></class></classes></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/l/OneDrive/Desktop/selenium session/Stackinsights.pro">
+        <classes>
+            <class name="test.Stackinsights_test"></class>
+        </classes>
+    </test>
+</suite>
